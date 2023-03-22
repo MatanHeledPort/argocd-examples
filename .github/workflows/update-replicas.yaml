@@ -18,7 +18,7 @@ jobs:
     steps:
       - run: |
           app_name="${{ inputs.app_name }}"
-          echo "trimmed_app_name=$(echo ${app_name} | cut -d '-'' -f 1)" >> $GITHUB_ENV
+          echo "trimmed_app_name=$(echo ${app_name} | cut -d '-' -f 1)" >> $GITHUB_ENV
       - uses: actions/checkout@v3
         with:
           persist-credentials: true

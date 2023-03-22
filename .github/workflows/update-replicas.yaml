@@ -1,14 +1,16 @@
 name: Update App replicas
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       app_name:
         required: true
+        description: "App Name"
         type: string
       replicas:
         required: true
-        type: number
+        description: "New replica count"
+        type: string
 
 jobs:
   update-replicas:

@@ -22,7 +22,7 @@ jobs:
       - name: Set replica count
         uses: mikefarah/yq@master
         with:
-          cmd: yq -i ".spec.replicas = ${{ inputs.replicas }}"" "${{ inputs.app_name }}/${{ inputs.app_name }}-deployment.yaml"
+          cmd: yq -i ".spec.replicas = ${{ inputs.replicas }}" "${{ inputs.app_name }}/${{ inputs.app_name }}-deployment.yaml"
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.1
         with:

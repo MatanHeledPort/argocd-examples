@@ -16,13 +16,16 @@ jobs:
   update-replicas:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          app_name="${{ inputs.app_name }}"
+          echo "trimmed_app_name=$(echo ${app_name} | cut -d '-'' -f 1)" >> $GITHUB_ENV
       - uses: actions/checkout@v3
         with:
           persist-credentials: true
       - name: Set replica count
         uses: mikefarah/yq@master
         with:
-          cmd: yq -i ".spec.replicas = ${{ inputs.replicas }}" "${{ inputs.app_name }}/${{ inputs.app_name }}-deployment.yaml"
+          cmd: yq -i ".spec.replicas = ${{ inputs.replicas }}" "${{ env.trimmed_app_name }}/${{ env.trimmed_app_name }}-deployment.yaml"
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.1
         with:

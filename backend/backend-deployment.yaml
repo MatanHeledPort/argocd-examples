@@ -8,7 +8,7 @@ spec:
       maxSurge: 25%
       maxUnavailable: 25%
     type: RollingUpdate
-  replicas: 3
+  replicas: 2
   revisionHistoryLimit: 3
   selector:
     matchLabels:
@@ -19,7 +19,7 @@ spec:
         app: backend
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
-        name: backend
-        ports:
-        - containerPort: 80
+        - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+          name: backend
+          ports:
+            - containerPort: 80
